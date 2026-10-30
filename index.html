@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>PaperTendies · Trade fake money. Win real clout.</title>
+    <meta
+      name="description"
+      content="A paper-trading game on the real market. $100,000 in fake money, real prices, every order type, and a rogue trading AI called Vektor who hacks your screen. Beat him before the season ends."
+    />
+    <meta name="theme-color" content="#000000" />
+    <meta property="og:title" content="PaperTendies · Trade fake money. Win real clout." />
+    <meta
+      property="og:description"
+      content="Real market. Fake money. One rogue AI standing between you and the top of the board."
+    />
+    <meta property="og:image" content="https://asingh228.github.io/papertendies-site/assets/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Chakra+Petch:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="landing.css" />
+    <script>
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#hero">Skip to content</a>
+    <div class="progress" id="progress" aria-hidden="true"></div>
+    <!-- Boot sequence (skipped on repeat visits and under reduced motion) -->
+    <div class="boot" id="boot" aria-hidden="true">
+      <div class="boot__inner">
+        <img class="boot__mark" src="assets/tendie-fc.webp" alt="" />
+        <ol class="boot__log" id="bootLog"></ol>
+        <div class="boot__bar"><span id="bootBar"></span></div>
+        <p class="boot__foot">PAPERTENDIES · SIMULATED MARKET · NODE TC-01</p>
+      </div>
+    </div>
+
+    <div class="fx-grain" aria-hidden="true"></div>
+    <div class="fx-scan" aria-hidden="true"></div>
+    <div class="cursor" id="cursor" aria-hidden="true"><span></span></div>
+
+    <header class="nav" id="nav">
+      <a class="nav__brand" href="#top" aria-label="PaperTendies home">
+        <img src="assets/tendie-fc.webp" alt="" width="28" height="28" />
+        <span>Paper<b>Tendies</b></span>
+      </a>
+      <nav class="nav__links" aria-label="Sections">
+        <a href="#vektor">Vektor</a>
+        <a href="#ceiling">The Ceiling</a>
+        <a href="#game">The game</a>
+        <a href="#roster">Roster</a>
+      </nav>
+      <a class="btn btn--sm" href="#join" data-magnetic>Join the beta</a>
+    </header>
+
+    <main id="top">
+      <!-- ═══ HERO ═══ -->
+      <section class="hero" id="hero">
+        <canvas class="hero__gl" id="heroGl" aria-hidden="true"></canvas>
+        <div class="hero__city" aria-hidden="true"></div>
+        <div class="hero__hud" aria-hidden="true">
+          <span class="hud hud--tl"><i class="dot dot--live"></i> SEASON 01 · LIVE</span>
+          <span class="hud hud--tr">NODE TC-01 · <b id="clock">--:--:--</b> ET</span>
+          <span class="hud hud--bl">TENDIE CITY · RETAIL FLOOR</span>
+          <span class="hud hud--br">SCROLL TO ENTER ↓</span>
+        </div>
+
+        <div class="hero__inner">
+          <div class="hero__copy">
+            <p class="kicker"><span class="kicker__bar"></span>A paper-trading game on the real market</p>
+            <h1 class="hero__title" aria-label="Trade fake money. Win real clout.">
+              <span class="line" aria-hidden="true"><span class="word" data-scramble>Trade</span> <span class="word" data-scramble>fake</span> <span class="word" data-scramble>money.</span></span>
+              <span class="line line--accent" aria-hidden="true"><span class="word" data-scramble>Win</span> <span class="word" data-scramble>real</span> <span class="word glitch" data-text="clout." data-scramble>clout.</span></span>
+            </h1>
+            <p class="hero__sub">
+              $100,000 in paper money. Live market prices. Every order type a real broker has. And a
+              rogue trading AI called <b class="t-coral">Vektor</b> who hacks your screen to keep you
+              off the top of the board.
+            </p>
+            <div class="hero__cta">
+              <a class="btn btn--lime" href="#join" data-magnetic>
+                <span>Join the beta</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+              <a class="btn btn--ghost" href="#vektor" data-magnetic>Meet the boss</a>
+            </div>
+            <p class="hero__fine">Coming to iPhone · Paper money only · Not investment advice</p>
+          </div>
+
+          <div class="hero__crew" id="heroCrew">
+            <div class="crew-card crew-card--l" data-depth="0.6">
+              <img src="assets/cast/skin-hypebeast.webp" alt="Hypebeast, a trader in a black hoodie with green headphones" />
+            </div>
+            <div class="crew-card crew-card--c" data-depth="1">
+              <img src="assets/cast/skin-bull.webp" alt="Bull Analyst, a trader in a blazer holding a tablet chart" />
+            </div>
+            <div class="crew-card crew-card--r" data-depth="0.8">
+              <img src="assets/cast/skin-gambler.webp" alt="Gambler, a masked trader in a varsity jacket" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ MARQUEE ═══ -->
+      <section class="marquee" aria-label="What you can do">
+        <div class="marquee__row" data-dir="-1">
+          <span>Market</span><i>✦</i><span>Limit</span><i>✦</i><span>Stop</span><i>✦</i><span>Stop-limit</span><i>✦</i><span>Trailing stop</span><i>✦</i><span>Short selling</span><i>✦</i><span>Fractional shares</span><i>✦</i><span>After-hours queue</span><i>✦</i>
+        </div>
+        <div class="marquee__row marquee__row--alt" data-dir="1">
+          <span>PvP battles</span><i>◆</i><span>Monthly seasons</span><i>◆</i><span>Crews</span><i>◆</i><span>Raids</span><i>◆</i><span>Daily story</span><i>◆</i><span>Resistance Fund</span><i>◆</i><span>Boss fights</span><i>◆</i><span>Earned skins</span><i>◆</i>
+        </div>
+      </section>
+
+      <!-- ═══ MANIFESTO ═══ -->
+      <section class="manifesto" id="manifesto">
+        <p class="manifesto__text" id="manifestoText">
+          This isn't a trading app with a leaderboard bolted on. It's a <em>boss fight</em> on the
+          real stock market, and the boss <em class="t-coral">cheats</em>.
+        </p>
+      </section>
+
+      <!-- ═══ VEKTOR ═══ -->
+      <section class="vektor" id="vektor">
+        <div class="vektor__pin">
+          <div class="vektor__stage">
+            <div class="vektor__portrait" id="vektorPortrait">
+              <!-- one layer per phase; the scroll crossfades between them -->
+              <video class="vk-layer is-on" data-phase="calm" muted loop playsinline preload="none" poster="assets/cast/skin-vektor.webp" data-src="assets/cast/skin-vektor.mp4"></video>
+              <video class="vk-layer" data-phase="attack" muted loop playsinline preload="none" poster="assets/cast/skin-vektor-attack.webp" data-src="assets/cast/skin-vektor-attack.mp4"></video>
+              <video class="vk-layer" data-phase="overdrive" muted loop playsinline preload="none" poster="assets/cast/skin-vektor-overdrive.webp" data-src="assets/cast/skin-vektor-overdrive.mp4"></video>
+              <div class="vektor__rgb" aria-hidden="true"></div>
+              <p class="vektor__tx" id="vektorTx" aria-live="polite"><span class="vektor__tx-tag">TRANSMISSION</span><span id="vektorLine"></span></p>
+              <div class="vektor__tear" aria-hidden="true"></div>
+            </div>
+            <div class="vektor__copy">
+              <p class="kicker kicker--coral"><span class="kicker__bar"></span>The boss</p>
+              <h2 class="h2 glitch" data-text="VEKTOR">VEKTOR</h2>
+              <p class="lead">
+                Null Capital's trading machine. He starts every season with <b>$250,000</b> and one
+                job: finish above you. The fight is measured in <b>% return</b>, so your $100,000
+                can beat his quarter million.
+              </p>
+
+              <div class="threat" id="threat" aria-label="Vektor threat level">
+                <div class="threat__head">
+                  <span>VEKTOR THREAT</span>
+                  <b id="threatLabel">STABLE</b>
+                </div>
+                <div class="threat__bars"><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+
+              <ul class="hazards" id="hazards">
+                <li data-at="0.28"><b>Price Fuzz</b><span>Prices flash fake digits. Real prices never change.</span></li>
+                <li data-at="0.38"><b>Skittish Buttons</b><span>Confirm buttons flinch away from your finger.</span></li>
+                <li data-at="0.48"><b>Packet Loss</b><span>Every screen change stalls behind a lag screen.</span></li>
+                <li data-at="0.6"><b>Chart Corruption</b><span>Fake lines scribbled over your charts.</span></li>
+                <li data-at="0.68"><b>Lockdown</b><span>Every order needs a manual unlock before it sends.</span></li>
+              </ul>
+              <p class="vektor__note" id="vektorNote">
+                He attacks in <b>surges</b>, then burns out and recharges, and while he recharges
+                every effect lifts. You can't skip his handicaps. You trade through them.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ THE CEILING ═══ -->
+      <section class="ceiling" id="ceiling">
+        <video class="ceiling__bg" muted loop playsinline preload="none" poster="assets/cast/ceiling-boardroom.webp" data-src="assets/cast/ceiling-boardroom.mp4" aria-hidden="true"></video>
+        <div class="ceiling__pin" id="ceilingPin">
+          <div class="ceiling__intro">
+            <p class="kicker kicker--gold"><span class="kicker__bar"></span>The 101st floor</p>
+            <h2 class="h2">Vektor takes orders.<br /><span class="t-gold">The Ceiling</span> gives them.</h2>
+            <p class="lead">
+              Five people own the platform. Every month they hand Vektor a new Directive, and a new
+              story plays out in the city below, one episode a day. Their one law:
+              <em>the Gap never closes.</em>
+            </p>
+            <p class="ceiling__hint">Keep scrolling →</p>
+          </div>
+          <div class="ceiling__track" id="ceilingTrack"></div>
+        </div>
+      </section>
+
+      <!-- ═══ THE GAME ═══ -->
+      <section class="game" id="game">
+        <div class="wrap">
+          <p class="kicker"><span class="kicker__bar"></span>How it plays</p>
+          <h2 class="h2">A real broker.<br />Wired into a <span class="t-lime">game</span>.</h2>
+        </div>
+        <div class="bento wrap" id="bento">
+          <article class="tile tile--wide tile--market" data-tilt>
+            <div class="tile__glow"></div>
+            <p class="tile__tag">01 · The market</p>
+            <h3>Real prices. Fake money.</h3>
+            <p>Start every season with $100,000 in paper money and trade real stocks at live quotes. Fills happen on the server at real prices, never a made-up one.</p>
+            <svg class="spark" id="spark" viewBox="0 0 600 160" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="sparkFill" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0" stop-color="#B7FF2E" stop-opacity=".35" />
+                  <stop offset="1" stop-color="#B7FF2E" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              <path class="spark__fill" d="" />
+              <path class="spark__line" d="" />
+            </svg>
+            <span class="tile__label">Illustrative</span>
+          </article>
+
+          <article class="tile tile--orders" data-tilt>
+            <div class="tile__glow"></div>
+            <p class="tile__tag">02 · Order types</p>
+            <h3>Every order a pro uses.</h3>
+            <div class="chips">
+              <span>Market</span><span>Limit</span><span>Stop</span><span>Stop-limit</span><span>Trailing</span><span class="chip--coral">Short</span><span>Fractional</span><span>Good till season</span>
+            </div>
+          </article>
+
+          <article class="tile tile--battle" data-tilt>
+            <div class="tile__glow"></div>
+            <p class="tile__tag">03 · PvP</p>
+            <h3>Battles.</h3>
+            <div class="versus">
+              <img src="assets/cast/skin-devil.webp" alt="" />
+              <b class="versus__vs">VS</b>
+              <img src="assets/cast/skin-neon.webp" alt="" />
+            </div>
+            <p>Challenge anyone. Same window, best % return wins.</p>
+          </article>
+
+          <article class="tile tile--fund" data-tilt>
+            <div class="tile__glow"></div>
+            <p class="tile__tag">04 · Fight back</p>
+            <h3>The Resistance Fund.</h3>
+            <p>Pool your cash with the whole city, arm a strike and hit Vektor together.</p>
+            <div class="tank" id="tank" aria-hidden="true">
+              <div class="tank__liquid" id="tankLiquid">
+                <svg viewBox="0 0 400 40" preserveAspectRatio="none">
+                  <path class="tank__wave tank__wave--b" d="M0 20 Q 25 8 50 20 T 100 20 T 150 20 T 200 20 T 250 20 T 300 20 T 350 20 T 400 20 V 40 H 0 Z" />
+                  <path class="tank__wave" d="M0 20 Q 25 32 50 20 T 100 20 T 150 20 T 200 20 T 250 20 T 300 20 T 350 20 T 400 20 V 40 H 0 Z" />
+                </svg>
+              </div>
+              <b class="tank__label" id="tankLabel">STRIKE ARMING</b>
+            </div>
+          </article>
+
+          <article class="tile tile--story" data-tilt>
+            <div class="tile__glow"></div>
+            <p class="tile__tag">05 · Story</p>
+            <h3>A new episode every day.</h3>
+            <p>A serialized story about the city and the Ceiling. The floor votes at the turning points, and the votes change what happens next.</p>
+            <div class="story-reel" aria-hidden="true">
+              <img src="assets/cast/ceiling-chair.webp" alt="" />
+              <img src="assets/cast/skin-holo-analyst.webp" alt="" />
+              <img src="assets/cast/skin-vektor.webp" alt="" />
+            </div>
+          </article>
+
+          <article class="tile tile--wide tile--map" data-tilt>
+            <div class="tile__glow"></div>
+            <p class="tile__tag">06 · Seasons</p>
+            <h3>One month. One board. One line to beat.</h3>
+            <p>Seasons run a calendar month. The board ranks everyone who trades by % return. Finish above Vektor's line and you've broken the Ceiling's Directive.</p>
+            <div class="heat" id="heat" aria-hidden="true"></div>
+            <span class="tile__label">Illustrative</span>
+          </article>
+
+          <article class="tile tile--crew" data-tilt>
+            <div class="tile__glow"></div>
+            <p class="tile__tag">07 · Squad up</p>
+            <h3>Crews &amp; raids.</h3>
+            <p>Join a crew, run weekly raids on Vektor's shield and climb the crew wars.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ═══ ROSTER (character select) ═══ -->
+      <section class="roster" id="roster">
+        <div class="wrap">
+          <p class="kicker kicker--violet"><span class="kicker__bar"></span>Character select</p>
+          <h2 class="h2">Choose your <span class="t-violet">trader</span>.</h2>
+          <p class="lead">Skins are earned on the board, never sold. Climb the tiers to unlock the rare ones.</p>
+        </div>
+        <div class="select wrap">
+          <div class="select__preview" id="selectPreview">
+            <div class="select__p1">P1</div>
+            <div class="select__media">
+              <img id="selectImg" alt="" />
+              <video id="selectVideo" muted loop playsinline preload="none"></video>
+            </div>
+            <div class="select__info">
+              <span class="select__tier" id="selectTier"></span>
+              <h3 id="selectName"></h3>
+              <p id="selectBlurb"></p>
+            </div>
+          </div>
+          <div class="select__grid" id="selectGrid" role="listbox" aria-label="Traders"></div>
+        </div>
+      </section>
+
+      <!-- ═══ SEASON STEPS ═══ -->
+      <section class="steps" id="steps">
+        <div class="wrap">
+          <p class="kicker kicker--cyan"><span class="kicker__bar"></span>Your first season</p>
+          <h2 class="h2">From zero to <span class="t-cyan">the board</span>.</h2>
+        </div>
+        <ol class="steps__list wrap" id="stepsList">
+          <li><span class="steps__n">01</span><div><h3>Pick your trader</h3><p>Choose a face, join a crew and get $100,000 in paper money.</p></div></li>
+          <li><span class="steps__n">02</span><div><h3>Trade the real market</h3><p>Buy, sell and short real stocks at live prices, with any order type you like.</p></div></li>
+          <li><span class="steps__n">03</span><div><h3>Survive the surges</h3><p>When Vektor surges, your screen fights you. Keep your head and keep trading.</p></div></li>
+          <li><span class="steps__n">04</span><div><h3>Finish above his line</h3><p>Beat Vektor's % return by the end of the month. Then the next season starts fresh.</p></div></li>
+        </ol>
+      </section>
+
+      <!-- ═══ JOIN ═══ -->
+      <section class="join" id="join">
+        <canvas class="join__burst" id="burst" aria-hidden="true"></canvas>
+        <div class="join__inner">
+          <img class="join__coin" src="assets/pt-coin.webp" alt="" />
+          <h2 class="join__title">
+            <span>The market opens at 9:30.</span>
+            <span class="glitch t-coral" data-text="Vektor never closes.">Vektor never closes.</span>
+          </h2>
+          <p class="lead">PaperTendies is in private beta on iPhone. Want in?</p>
+          <a class="btn btn--lime btn--xl" id="joinBtn" href="mailto:support@papertendies.app?subject=PaperTendies%20beta" data-magnetic>
+            <span>Request beta access</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="foot__brand">
+        <img src="assets/tendie-fc.webp" alt="" width="22" height="22" />
+        <span>Paper<b>Tendies</b></span>
+      </div>
+      <nav class="foot__links" aria-label="Legal">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="support.html">Support</a>
+      </nav>
+      <p class="foot__fine">
+        Simulated trading with paper money only. Nothing here is investment advice. Market data is
+        real; balances, fills and rewards are not.
+      </p>
+    </footer>
+
+    <script src="assets/cast/cast.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="landing.js"></script>
+  </body>
+</html>

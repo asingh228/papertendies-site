@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>404 · PaperTendies</title>
+    <link rel="icon" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Chakra+Petch:wght@600;700&family=Geist:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="landing.css" />
+    <style>
+      .lost {
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: 40px var(--gutter);
+        text-align: center;
+        background: radial-gradient(60% 50% at 50% 45%, rgba(255, 77, 77, 0.16), transparent 70%), #000;
+      }
+      .lost__code {
+        margin: 0;
+        font: 900 clamp(110px, 26vw, 280px)/0.85 var(--display);
+        font-stretch: 125%;
+        letter-spacing: -0.05em;
+        color: var(--coral);
+        text-shadow: 0 0 60px rgba(255, 77, 77, 0.5);
+      }
+      .lost p {
+        max-width: 44ch;
+        margin: 18px auto 30px;
+        color: var(--muted);
+      }
+      .lost p b {
+        color: var(--text);
+        font-family: var(--hud);
+        letter-spacing: 0.06em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fx-scan" aria-hidden="true"></div>
+    <main class="lost">
+      <div>
+        <h1 class="lost__code glitch" data-text="404">404</h1>
+        <p><b>PACKET LOSS.</b> Vektor ate this page. The rest of the city is still standing.</p>
+        <a class="btn btn--lime" href="./">Back to the floor</a>
+      </div>
+    </main>
+  </body>
+</html>
