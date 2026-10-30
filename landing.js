@@ -531,9 +531,24 @@
     });
   }
 
+  /* ── the app: phones rise in at different speeds ─ */
+  if (!reduced) {
+    $$('#phones .phone').forEach((p, i) => {
+      gsap.fromTo(
+        p,
+        { yPercent: 18 + i * 10 },
+        {
+          yPercent: -6 - i * 4,
+          ease: 'none',
+          scrollTrigger: { trigger: '#app', start: 'top bottom', end: 'bottom top', scrub: true },
+        },
+      );
+    });
+  }
+
   /* ── reveals ───────────────────────────────────── */
   if (!reduced) {
-    const rv = $$('.game .kicker, .game .h2, .roster .kicker, .roster .h2, .roster .lead, .steps .kicker, .steps .h2, .ceiling__intro > *, .vektor__copy > .kicker, .vektor__copy > .h2, .vektor__copy > .lead, .tile, .join__inner > *');
+    const rv = $$('.app__copy > *, .feats li, .game .kicker, .game .h2, .roster .kicker, .roster .h2, .roster .lead, .steps .kicker, .steps .h2, .ceiling__intro > *, .vektor__copy > .kicker, .vektor__copy > .h2, .vektor__copy > .lead, .tile, .join__inner > *');
     rv.forEach((el) => el.classList.add('rv'));
     ScrollTrigger.batch(rv, {
       start: 'top 88%',
