@@ -148,6 +148,43 @@
   tick();
   setInterval(tick, 1000);
 
+  // The crew keeps changing: every few seconds one card glitches into a different trader.
+  (() => {
+    if (reduced) return;
+    const cards = $$('#heroCrew .crew-card');
+    const pool = CAST.traders.filter((t) => !t.id.startsWith('vektor'));
+    if (cards.length < 1 || pool.length < 4) return;
+    pool.forEach((t) => (new Image().src = t.img)); // warm the cache so swaps never flash empty
+    const shown = () => cards.map((c) => c.querySelector('img:not(.ghost)').getAttribute('src'));
+    let turn = 0;
+    const swap = () => {
+      if (document.hidden || window.scrollY > innerHeight) return;
+      const card = cards[[1, 0, 2][turn++ % 3]];
+      const img = card.querySelector('img:not(.ghost)');
+      const taken = shown();
+      const options = pool.filter((t) => !taken.includes(t.img));
+      const next = options[(Math.random() * options.length) | 0];
+      const ghosts = ['ghost ghost--c', 'ghost ghost--r'].map((cls) => {
+        const g = document.createElement('img');
+        g.className = cls;
+        g.src = next.img;
+        g.alt = '';
+        card.appendChild(g);
+        return g;
+      });
+      card.classList.add('is-glitching');
+      setTimeout(() => {
+        img.src = next.img;
+        img.alt = `${next.name}: ${next.blurb}`;
+      }, 230);
+      setTimeout(() => {
+        card.classList.remove('is-glitching');
+        ghosts.forEach((g) => g.remove());
+      }, 520);
+    };
+    setTimeout(() => setInterval(swap, 2600), 2400);
+  })();
+
   // mouse parallax on the crew
   if (!reduced && finePointer) {
     const cards = $$('#heroCrew [data-depth]');
