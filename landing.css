@@ -1423,6 +1423,79 @@ html.js .hazards li.on {
   }
 }
 
+/* ── compete ──────────────────────────────────────── */
+.compete {
+  padding: clamp(100px, 14vh, 160px) 0;
+  background: radial-gradient(55% 50% at 25% 50%, rgba(255, 200, 61, 0.1), transparent 70%);
+}
+.compete__grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+.compete__phones {
+  position: relative;
+  height: clamp(520px, 56vw, 700px);
+}
+.phone--podium { left: 0; top: 0; width: 56%; z-index: 2; rotate: -4deg; }
+.phone--podium .phone__screen { box-shadow: 0 0 0 1px rgba(255, 200, 61, 0.45), 0 0 90px -20px rgba(255, 200, 61, 0.55), 0 40px 90px -20px #000; }
+.phone--battles { right: 0; top: 12%; width: 52%; rotate: 5deg; }
+.phone--battles .phone__screen { box-shadow: 0 0 0 1px rgba(255, 77, 77, 0.45), 0 0 90px -20px rgba(255, 77, 77, 0.55), 0 40px 90px -20px #000; }
+.modes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 32px;
+}
+.mode {
+  --c: var(--gold);
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--c);
+  border-radius: 14px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--c) 8%, transparent), transparent 70%), #0b0b0d;
+  transition: transform 0.3s var(--ease), border-color 0.3s;
+}
+.mode:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--c) 50%, transparent);
+}
+.mode b {
+  display: block;
+  margin-bottom: 6px;
+  font: 700 14px/1.2 var(--hud);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c);
+}
+.mode span {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.mode--gold { --c: var(--gold); }
+.mode--coral { --c: var(--coral); }
+.mode--violet { --c: var(--violet); }
+.mode--cyan { --c: var(--cyan); }
+.mode--lime { --c: var(--lime); }
+.mode--blue { --c: var(--blue); }
+@media (max-width: 900px) {
+  .compete__grid {
+    grid-template-columns: 1fr;
+  }
+  .compete__phones {
+    order: 2;
+    height: 98vw;
+    max-height: 620px;
+  }
+}
+@media (max-width: 560px) {
+  .modes {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ── roster / character select ────────────────────── */
 .roster {
   padding: clamp(100px, 14vh, 160px) 0;
